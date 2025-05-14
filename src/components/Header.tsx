@@ -1,5 +1,9 @@
-
 import React from 'react';
+
+// These could be made dynamic via props or context in a future enhancement
+const DISPLAY_YEAR = '2025';
+const DISPLAY_TERM_STRING = 'Summer'; // Or 'Fall', 'Spring'
+const DISPLAY_CAMPUS = 'New Brunswick';
 
 const Header = () => {
   return (
@@ -12,10 +16,10 @@ const Header = () => {
         </div>
         <div className="flex items-center space-x-4">
           <span className="text-sm bg-white/20 px-3 py-1 rounded-full">
-            2025 Spring
+            {DISPLAY_YEAR} {DISPLAY_TERM_STRING}
           </span>
           <span className="text-sm bg-white/20 px-3 py-1 rounded-full">
-            New Brunswick
+            {DISPLAY_CAMPUS}
           </span>
         </div>
       </div>
