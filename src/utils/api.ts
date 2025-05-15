@@ -1,7 +1,10 @@
+
 import { Course, OpenSection } from '../types/course';
 import { toast } from '../components/ui/use-toast';
 
-const BASE_URL = 'https://classes.rutgers.edu/soc/api';
+// CORS proxy to fix API access issues
+const CORS_PROXY = 'https://corsproxy.io/?';
+const BASE_URL = `${CORS_PROXY}https://classes.rutgers.edu/soc/api`;
 
 // Updated Default Parameters (Summer 2025)
 const CURRENT_YEAR = '2025';
@@ -20,7 +23,7 @@ export const fetchCourses = async (
     if (subject) {
       url += `&subject=${subject}`;
     }
-    console.log(`Workspaceing courses from: ${url}`); // DEBUG
+    console.log(`Fetching courses from: ${url}`); // DEBUG
     const response = await fetch(url);
     
     if (!response.ok) {
@@ -49,7 +52,7 @@ export const fetchOpenSections = async (
 ): Promise<OpenSection[]> => {
   try {
     const url = `${BASE_URL}/openSections.json?year=${year}&term=${term}&campus=${campus}`;
-    console.log(`Workspaceing open sections from: ${url}`); // DEBUG
+    console.log(`Fetching open sections from: ${url}`); // DEBUG
     const response = await fetch(url);
     
     if (!response.ok) {
@@ -102,7 +105,7 @@ export const fetchSubjects = async (
 ): Promise<string[]> => {
   try {
     const url = `${BASE_URL}/subjects.json?year=${year}&term=${term}&campus=${campus}`;
-    console.log(`Workspaceing subjects from: ${url}`); // DEBUG
+    console.log(`Fetching subjects from: ${url}`); // DEBUG
     const response = await fetch(url);
     
     if (!response.ok) {
